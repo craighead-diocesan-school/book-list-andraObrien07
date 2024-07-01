@@ -1,26 +1,31 @@
 <script>
   import Header from "$lib/Header.svelte";
-  let isChecked = false;
-  let books = [];
+  // let isChecked = false;
+  let books = [
+    // { nameBook: "Daisy Jones", read: false },
+    // { nameBook: "A Little Life", read: false },
+  ];
+  //an array that will hold the list of books. ( Array starting point)
+
   function addBook() {
-    books = [...books, ""];
+    //addbook is a function that adds a new empty string to the books array whenever it is called.(function annoucement/declaration)
+    // books = [...books, ""];
+    books = [{ nameBook: "", read: false }];
+    // bookinput = [{ nameBook: "", read: false }];
   }
 
   function saveBooks() {
-    const booksAsJSON = JSON.stringify(books);
-    localStorage.bookList = booksAsJSON;
+    localStorage.bookList = JSON.stringify(books);
   }
 
   function loadBooks() {
     const booksAsJSON = localStorage.bookList;
     const booksAsArray = JSON.parse(booksAsJSON);
-    tasks = booksAsArray;
+    books = booksAsArray;
   }
 </script>
 
 <Header />
-
-<h2>SvelteKit</h2>
 
 <button on:click={addBook}> Add Book</button>
 
@@ -30,11 +35,11 @@
 
 {#each books as book, index}
   <div class="bookRead">
-    <div class="book">
-      <input bind:value={books[index]} />
-    </div>
-    <input type="checkbox" bind:checked={isChecked} />
-    <p>Book is read{isChecked}.</p>
+    <!-- <div class="book"> -->
+    <input bind:value={books[index].nameBook} />
+    <!-- <input bind:value={bookinput[index]nameBook} /> -->
+    <!-- </div> -->
+    <input type="checkbox" bind:checked={books[index].read} />
   </div>
 {/each}
 
