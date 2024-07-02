@@ -11,18 +11,23 @@
     //addbook is a function that adds a new empty string to the books array whenever it is called.(function annoucement/declaration)
     // books = [...books, ""];
     books = [...books, { nameBook: "", read: false }];
-    // ... books= expanding the stuff in the array laready
+    // ... books= expanding the stuff in the array already
     // { nameBook: "", read: false }= adds a blank object at the end, the oibject contains 2 properites
   }
 
   function saveBooks() {
     localStorage.bookList = JSON.stringify(books);
+    //local storage is an API that allows you to store key-value pairs in a web browser. Data stored in localStorage has no expiration time, meaning it will stay until it's deleted.
+    //The JSON string representation of the tasks array is stored in localStorage under the key todos. This means that the tasks array is saved as a string in the browser's local storage and can be retrieved later.
   }
 
   function loadBooks() {
     const booksAsJSON = localStorage.bookList;
+    // localStorage.bookList: This gets the value stored in localStorage under the key bookList. This is the JSON string that was previously saved by the saveBooks function.
     const booksAsArray = JSON.parse(booksAsJSON);
+    // The JSON.parse function converts the JSON string back into the array of books.
     books = booksAsArray;
+    // This overwrites the books array with the books that were previously saved.
   }
 </script>
 
