@@ -1,6 +1,6 @@
 <script>
   import Header from "$lib/Header.svelte";
-  // let isChecked = false;
+
   let books = [
     // { nameBook: "Daisy Jones", read: false },
     // { nameBook: "A Little Life", read: false },
@@ -10,8 +10,9 @@
   function addBook() {
     //addbook is a function that adds a new empty string to the books array whenever it is called.(function annoucement/declaration)
     // books = [...books, ""];
-    books = [{ nameBook: "", read: false }];
-    // bookinput = [{ nameBook: "", read: false }];
+    books = [...books, { nameBook: "", read: false }];
+    // ... books= expanding the stuff in the array laready
+    // { nameBook: "", read: false }= adds a blank object at the end, the oibject contains 2 properites
   }
 
   function saveBooks() {
