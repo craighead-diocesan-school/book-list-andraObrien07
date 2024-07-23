@@ -29,6 +29,17 @@
     books = booksAsArray;
     // This overwrites the books array with the books that were previously saved.
   }
+  let selected = lists[0];
+  let lists = [
+    {
+      name: "Books",
+      lists: ["Diasy Jones", "the Silent P"],
+    },
+    {
+      name: "Recipe",
+      list: ["eats", "food"],
+    },
+  ];
 </script>
 
 <Header />
@@ -47,6 +58,17 @@
     <!-- </div> -->
     <input type="checkbox" bind:checked={books[index].read} />
   </div>
+{/each}
+
+{selected}
+<!-- tests that it works -->
+<select bind:value={selected}>
+  {#each lists as list}
+    <option value={list}> {list.name}</option>
+  {/each}
+</select>
+{#each selected.list as item, index}
+  <input bind:value={item} />
 {/each}
 
 <footer>
