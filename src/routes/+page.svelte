@@ -29,17 +29,18 @@
     books = booksAsArray;
     // This overwrites the books array with the books that were previously saved.
   }
-  let selected = lists[0];
+
   let lists = [
     {
       name: "Books",
-      lists: ["Diasy Jones", "the Silent P"],
+      list: ["Diasy Jones", "the Silent P"],
     },
     {
       name: "Recipe",
       list: ["eats", "food"],
     },
   ];
+  let selected = lists[0];
 </script>
 
 <Header />
@@ -68,7 +69,7 @@
   {/each}
 </select>
 {#each selected.list as item, index}
-  <input bind:value={item} />
+  <input bind:value={selected.list[index]} />
 {/each}
 
 <footer>
