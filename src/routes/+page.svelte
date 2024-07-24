@@ -41,6 +41,15 @@
     },
   ];
   let selected = lists[0];
+  function removeItem(index) {
+    selected.list = [
+      ...selected.list.slice(0, index),
+      ...selected.list.slice(index + 1),
+    ];
+  }
+  function addItem() {
+    selected.list = [...selected.list, ""];
+  }
 </script>
 
 <Header />
@@ -61,7 +70,7 @@
   </div>
 {/each}
 
-{selected}
+<!-- {selected} -->
 <!-- tests that it works -->
 <select bind:value={selected}>
   {#each lists as list}
@@ -69,8 +78,14 @@
   {/each}
 </select>
 {#each selected.list as item, index}
-  <input bind:value={selected.list[index]} />
+  <input bind:value={item} />
+  <button
+    on:click={() => {
+      removeItem(index);
+    }}>🗑️</button
+  >
 {/each}
+<button on:click={addItem}>+</button>
 
 <footer>
   <p>&copy; Craighead Diocesan School 2024</p>
