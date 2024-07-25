@@ -41,14 +41,22 @@
     },
   ];
   let selected = lists[0];
+
   function removeItem(index) {
     selected.list = [
       ...selected.list.slice(0, index),
       ...selected.list.slice(index + 1),
     ];
   }
+
+  function removeList(index) {
+    lists = [...lists.slice(0, index), ...lists.slice(index + 1)];
+  }
   function addItem() {
     selected.list = [...selected.list, ""];
+  }
+  function addList() {
+    lists = [lists, { name: "", lists: [""] }];
   }
 </script>
 
@@ -86,6 +94,12 @@
   >
 {/each}
 <button on:click={addItem}>+</button>
+<button
+  on:click={() => {
+    removeList(lists.indexOf(selected));
+  }}>RemoveList</button
+>
+<button on:click={addList}>Addlist</button>
 
 <footer>
   <p>&copy; Craighead Diocesan School 2024</p>
